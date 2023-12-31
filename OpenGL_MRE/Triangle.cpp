@@ -1,4 +1,5 @@
 #include <Triangle.h>
+#include <vector>
 #include <GL/glew.h>
 
 Triangle::Triangle(const std::vector<double>& positions, const std::vector<float>& colors)
@@ -18,8 +19,11 @@ Triangle::Triangle(const std::vector<double>& positions, const std::vector<float
     glBufferData(GL_ARRAY_BUFFER, positions.size() * sizeof(double), positions.data(), GL_STATIC_DRAW);
     glVertexAttribPointer(0, 2, GL_DOUBLE, GL_FALSE, 2 * sizeof(double), nullptr);
     glEnableVertexAttribArray(0);
+}
 
-    Triangle::CompileShaders();
+void Triangle::InitShader()
+{
+    CompileShaders();
 
     m_shaderProgram = glCreateProgram();
     glAttachShader(m_shaderProgram, m_vertexShader);

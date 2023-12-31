@@ -1,11 +1,15 @@
-#include "GL/glew.h"
-
 #include <Entity.h>
+#include <GL/glew.h>
 #include <iostream>
 
+unsigned int Entity::m_shaderProgram = 0;
+const char* Entity::m_vertexShaderSource = nullptr;
+const char* Entity::m_fragmentShaderSource = nullptr;
+unsigned int Entity::m_fragmentShader = 0;
+unsigned int Entity::m_vertexShader = 0;
+
 Entity::Entity(const unsigned int count, const unsigned int mode)
-    : m_vertexShaderSource(nullptr), m_fragmentShaderSource(nullptr), m_count(count), m_fragmentShader(0), m_mode(mode),
-    m_shaderProgram(0), m_VAO(0), m_VBO(0), m_vertexShader(0)
+    : m_count(count), m_mode(mode), m_VAO(0), m_VBO(0)
 {
 }
 

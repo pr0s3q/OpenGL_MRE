@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 #include "Entity.h"
 
@@ -8,8 +9,11 @@ public:
     Triangle(const std::vector<double>& positions, const std::vector<float>& colors);
 
     void Color() override;
-    void CompileShaders() override;
+    static void InitShader();
 
 protected:
     ~Triangle() = default;
+
+private:
+    static void CompileShaders();
 };
